@@ -12,10 +12,12 @@ import {
   ContentForm,
   ContentHeader,
   SInput,
+  SSelect,
   Title,
 } from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { ISpecialty } from "../../../interfaces/ISpecialty";
 
 interface IActived {
   isOn: boolean;
@@ -24,6 +26,7 @@ interface IActived {
 }
 
 export function MAddDoctor(props: IActived) {
+  const [specialtys, setSpecialtys] = useState<ISpecialty[]>([]);
   const [doctor, setDoctor] = useState({
     name: "",
     crm: "",
@@ -32,6 +35,15 @@ export function MAddDoctor(props: IActived) {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    loadSpecialty();
+  }, []);
+
+  const loadSpecialty = async () => {
+    const response = await axios.get("http://localhost:3333/api/v1/specialtys");
+    setSpecialtys(response.data);
+  };
 
   function submitForm(event: { preventDefault: () => void }) {
     event.preventDefault();
@@ -94,7 +106,23 @@ export function MAddDoctor(props: IActived) {
             placeholder="Telefone"
           />
 
-          <SInput type="text" placeholder="Especialidade" />
+          <SSelect>
+            <option id="specialty" value={0}>
+              Selecionar especialidade
+            </option>
+
+            {specialtys
+              .sort((a, b) => {
+                return a.name
+                  .toLocaleLowerCase()
+                  .localeCompare(b.name.toLocaleLowerCase());
+              })
+              .map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
+          </SSelect>
 
           <ContentBtns>
             <BtnCancel onClick={() => props.onClickClose()}>Cancelar</BtnCancel>

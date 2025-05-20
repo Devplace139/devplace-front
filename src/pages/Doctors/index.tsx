@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {
@@ -18,13 +17,16 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
 import { IDoctors } from "../../interfaces/IDoctors";
 import { MAddDoctor } from "../../components/Modal/MAddDoctor";
+import { MEditDoctor } from "../../components/Modal/MEditDoctor";
 
 export function Doctors() {
   const [doctors, setDoctors] = useState<IDoctors[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState(doctors);
+  const [editDoctors, setEditDoctors] = useState<IDoctors | null>(null);
 
   const [openAddDoctor, setOpenAddDoctor] = useState(false);
+  const [openEditDoctor, setOpenEditDoctor] = useState(false);
 
   useEffect(() => {
     loadDoctors();
@@ -62,10 +64,11 @@ export function Doctors() {
     await axios
       .delete(`http://localhost:3333/api/v1/doctors/${id}`)
       .then(() => {
-        setDoctors(doctors.filter((d) => id !== d.id));
+        // setDoctors(doctors.filter((d) => id !== d.id));
+        loadDoctors();
       })
       .catch((error) => {
-        console.log("Erro ao excluir usuário: " + error);
+        console.log("Erro ao excluir médico: " + error);
       });
   }
 
@@ -75,6 +78,15 @@ export function Doctors() {
 
   const handleCloseAddDoctor = () => {
     setOpenAddDoctor(!openAddDoctor);
+  };
+
+  const handleOpenEditDoctor = (doctor: IDoctors) => {
+    setEditDoctors(doctor);
+    setOpenEditDoctor(!openEditDoctor);
+  };
+
+  const handleCloseEditDoctor = () => {
+    setOpenEditDoctor(!openEditDoctor);
   };
 
   return (
@@ -122,9 +134,9 @@ export function Doctors() {
                       <td>{d.email}</td>
                       <td></td>
                       <STdAction>
-                        <Link to={`/edit-user/${d.id}`}>
+                        <button onClick={() => handleOpenEditDoctor(d)}>
                           <FiEdit size={20} color="blue" />
-                        </Link>
+                        </button>
                         <button onClick={() => deleteDoctor(d.id)}>
                           <FiTrash2 size={20} color="red" />
                         </button>
@@ -135,11 +147,21 @@ export function Doctors() {
             </tbody>
           </table>
         </TableContainer>
-
+        {/* Modal Add Doctor */}
         {openAddDoctor && (
           <MAddDoctor
             isOn={openAddDoctor}
             onClickClose={() => handleCloseAddDoctor()}
+            onClickLoadDoctor={() => loadDoctors()}
+          />
+        )}
+
+        {/* Modal Edit Doctor */}
+        {openEditDoctor && (
+          <MEditDoctor
+            isOn={openEditDoctor}
+            editDoctor={editDoctors}
+            onClickClose={() => handleCloseEditDoctor()}
             onClickLoadDoctor={() => loadDoctors()}
           />
         )}

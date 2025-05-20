@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styled from "styled-components";
-import { IActived } from "../../../interfaces/IHelper";
+import { IActived } from "../../../interfaces/IUsers";
 
 export const Container = styled.div<IActived>`
   width: 100vw;
@@ -74,20 +74,26 @@ export const SInput = styled.input`
   }
 `;
 
-export const SSelect = styled.select`
+export const SInputPass = styled.input<IActived>`
   width: 100%;
   padding: 0 1.5rem;
   height: 3rem;
   border-radius: 0.25rem;
-  margin-top: 0.5rem;
+
   border: 1px solid #d7d7d7;
-  background-color: #e7e9ee;
+  background: #e7e9ee;
+
   font-weight: 400;
   font-size: 1rem;
 
-  option {
-    padding: 0 1.5rem;
-    margin: 10px;
+  display: ${({ isOn }) => (isOn ? "flex" : "none")};
+
+  &::placeholder {
+    color: var(--text-body);
+  }
+
+  & + input {
+    margin-top: 0.5rem;
   }
 `;
 
