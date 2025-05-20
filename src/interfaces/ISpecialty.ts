@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-export default interface IUsers {
+export interface ISpecialty {
   id: string;
   name: string;
-  email: string;
+  description: string;
 }

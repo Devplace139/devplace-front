@@ -17,11 +17,10 @@ export const Container = styled.div<IActived>`
 `;
 
 export const Content = styled.div`
-  width: 40%;
-  height: 50%;
+  width: 35%;
   background-color: white;
   border-radius: 8px;
-  padding: 5px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
@@ -29,7 +28,6 @@ export const Content = styled.div`
 
 export const ContentHeader = styled.div`
   width: 100%;
-  border: 1px solid black;
   padding: 5px;
 
   display: flex;
@@ -52,8 +50,6 @@ export const Close = styled.div`
 
 export const ContentForm = styled.div`
   width: 100%;
-  height: 100%;
-  border: 1px solid black;
   margin: 15px 0;
 `;
 
@@ -78,16 +74,58 @@ export const SInput = styled.input`
   }
 `;
 
-export const BtnSave = styled.button`
+export const SInputPass = styled.input<IActived>`
   width: 100%;
   padding: 0 1.5rem;
-  height: 4rem;
+  height: 3rem;
+  border-radius: 0.25rem;
+
+  border: 1px solid #d7d7d7;
+  background: #e7e9ee;
+
+  font-weight: 400;
+  font-size: 1rem;
+
+  display: ${({ isOn }) => (isOn ? "flex" : "none")};
+
+  &::placeholder {
+    color: var(--text-body);
+  }
+
+  & + input {
+    margin-top: 0.5rem;
+  }
+`;
+
+export const ContentBtns = styled.div`
+  width: 100%;
+  margin-top: 1.5rem;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const BtnCancel = styled.button`
+  padding: 0 1.5rem;
+  height: 3rem;
+  background: white;
+  color: black;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  font-size: 1rem;
+  font-weight: 600;
+`;
+
+export const BtnSave = styled.button`
+  padding: 0 1.5rem;
+  height: 3rem;
   background: var(--green);
   color: #fff;
   border-radius: 0.25rem;
   border: 0;
   font-size: 1rem;
-  margin-top: 1.5rem;
   font-weight: 600;
 
   transition: filter 0.2s;

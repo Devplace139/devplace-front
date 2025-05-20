@@ -1,29 +1,31 @@
 /* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
-import type IUsers from "../../../interfaces/IUsers";
-import { Link } from "react-router-dom";
+import type IUsers from "../../interfaces/IUsers";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {
   BtnAdd,
   Container,
   Content,
+  SAction,
   SSearch,
-  STdAction,
   STitlePage,
   TableContainer,
   WSearch,
 } from "./styles";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
-import { MUSer } from "../../../components/Modal/MUser";
+import { MAddUSer } from "../../components/Modal/MAddUser";
+import { MEditUSer } from "../../components/Modal/MEditUser";
 
 function Home() {
   const [users, setUsers] = useState<IUsers[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredUsers, setFilteredUsers] = useState(users);
+  const [editUsers, setEditUsers] = useState<IUsers | null>(null);
 
   const [openAddUser, setOpenAddUser] = useState(false);
+  const [openEditUser, setOpenEditUser] = useState(false);
 
   useEffect(() => {
     loadUsers();
@@ -60,20 +62,30 @@ function Home() {
     await axios
       .delete(`http://localhost:3333/api/v1/users/${id}`)
       .then(() => {
-        setUsers(users.filter((u) => id !== u.id));
+        // setUsers(users.filter((u) => id !== u.id));
+        loadUsers();
       })
       .catch((error) => {
         console.log("Erro ao excluir usuário: " + error);
       });
   }
 
+  const handleOpenAddUser = () => {
+    setOpenAddUser(!openAddUser);
+  };
+
   const handleCloseAddUser = () => {
     setOpenAddUser(!openAddUser);
   };
 
-  const handleOpenAddUser = () => {
-    setOpenAddUser(!openAddUser);
-    console.log(openAddUser);
+  const handleOpenEditUser = (user: IUsers) => {
+    setEditUsers(user);
+    setOpenEditUser(!openAddUser);
+  };
+
+  const handleCloseEditUser = () => {
+    setEditUsers(null);
+    setOpenEditUser(!openEditUser);
   };
 
   return (
@@ -92,7 +104,6 @@ function Home() {
               />
             </SSearch>
 
-            {/* <Link to={"/add-user"}>Novo usuário</Link> */}
             <BtnAdd onClick={() => handleOpenAddUser()}>Novo usuário</BtnAdd>
           </WSearch>
         </Content>
@@ -104,28 +115,50 @@ function Home() {
               <th></th>
             </thead>
             <tbody>
-              {filteredUsers.map((u: IUsers) => {
-                return (
-                  <tr key={u.id}>
-                    <td>{u.name}</td>
-                    <td>{u.email}</td>
-                    <STdAction>
-                      <Link to={`/edit-user/${u.id}`}>
-                        <FiEdit size={20} color="blue" />
-                      </Link>
-                      <button onClick={() => deleteUser(u.id)}>
-                        <FiTrash2 size={20} color="red" />
-                      </button>
-                    </STdAction>
-                  </tr>
-                );
-              })}
+              {filteredUsers
+                .sort((a, b) => {
+                  return a.name
+                    .toLocaleLowerCase()
+                    .localeCompare(b.name.toLocaleLowerCase());
+                })
+                .map((u: IUsers) => {
+                  return (
+                    <tr key={u.id}>
+                      <td>{u.name}</td>
+                      <td>{u.email}</td>
+                      <SAction>
+                        <button onClick={() => handleOpenEditUser(u)}>
+                          <FiEdit size={20} color="blue" />
+                        </button>
+                        <button onClick={() => deleteUser(u.id)}>
+                          <FiTrash2 size={20} color="red" />
+                        </button>
+                      </SAction>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </TableContainer>
 
         {/* Modal Add User */}
-        <MUSer isOn={openAddUser} onClick={() => handleCloseAddUser()} />
+        {openAddUser && (
+          <MAddUSer
+            isOn={openAddUser}
+            onClickClose={() => handleCloseAddUser()}
+            onClickLoadUser={() => loadUsers()}
+          />
+        )}
+
+        {/* Modal Edit User */}
+        {openEditUser && (
+          <MEditUSer
+            isOn={openEditUser}
+            onClickClose={() => handleCloseEditUser()}
+            onClickLoadUser={() => loadUsers()}
+            editUser={editUsers}
+          />
+        )}
       </Container>
     </>
   );

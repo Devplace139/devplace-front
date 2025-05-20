@@ -83,13 +83,27 @@ export const SSearch = styled.div`
   }
 `;
 
+export const BtnAdd = styled.button`
+  font-size: 1rem;
+  background: #33cc95;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  justify-content: center;
+  padding: 5px 10px;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+`;
+
 export const TableContainer = styled.section`
   margin-top: 20px;
   border-radius: 5px 5px 0 0;
 
   table {
     width: 100%;
-    border-spacing: 0 3px;
+    border-spacing: 0 6px;
 
     th {
       color: rgba(0, 0, 0, 0.6);
@@ -136,7 +150,7 @@ export const TableContainer = styled.section`
   }
 `;
 
-export const STdAction = styled.td`
+export const SAction = styled.td`
   display: flex;
   justify-content: end;
   align-items: center;

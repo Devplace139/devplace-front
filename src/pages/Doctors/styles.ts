@@ -95,7 +95,6 @@ export const BtnAdd = styled.button`
 
   display: flex;
   align-items: center;
-  overflow: hidden;
 `;
 
 export const TableContainer = styled.section`
@@ -104,7 +103,7 @@ export const TableContainer = styled.section`
 
   table {
     width: 100%;
-    border-spacing: 0 6px;
+    border-spacing: 0 3px;
 
     th {
       color: rgba(0, 0, 0, 0.6);
