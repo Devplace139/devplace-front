@@ -41,7 +41,7 @@ export function MAddDoctor(props: IActived) {
   }, []);
 
   const loadSpecialty = async () => {
-    const response = await axios.get("http://localhost:3333/api/v1/specialtys");
+    const response = await axios.get("http://localhost:3000/api/v1/specialtys");
     setSpecialtys(response.data);
   };
 
@@ -51,7 +51,7 @@ export function MAddDoctor(props: IActived) {
     console.log(doctor);
 
     axios
-      .post("http://localhost:3333/api/v1/doctors/", doctor)
+      .post("http://localhost:3000/api/v1/doctors/", doctor)
       .then(() => {
         emptyFields();
         props.onClickClose();

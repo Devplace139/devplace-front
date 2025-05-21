@@ -17,21 +17,20 @@ import {
 } from "./style";
 import { useState } from "react";
 import axios from "axios";
-import { IDoctors } from "../../../interfaces/IDoctor";
+import { IClinic } from "../../../interfaces/IClinic";
 
 interface IActived {
   isOn: boolean;
-  editDoctor: IDoctors | null;
+  editClinic: IClinic | null;
   onClickClose: () => void;
-  onClickLoadDoctor: () => void;
+  onClickLoadClinic: () => void;
 }
 
-export function MEditDoctor(props: IActived) {
+export function MEditClinic(props: IActived) {
   const [edit, setEdit] = useState<any>({
-    name: props.editDoctor?.name,
-    crm: props.editDoctor?.crm,
-    phone: props.editDoctor?.phone,
-    email: props.editDoctor?.email,
+    name: props.editClinic?.name,
+    address: props.editClinic?.address,
+    phone: props.editClinic?.phone,
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -39,11 +38,11 @@ export function MEditDoctor(props: IActived) {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:3000/api/v1/doctors/${props.editDoctor?.id}`, edit)
+      .put(`http://localhost:3000/api/v1/clinics/${props.editClinic?.id}`, edit)
       .then((response) => {
         if (response.status === 200) {
           props.onClickClose();
-          props.onClickLoadDoctor();
+          props.onClickLoadClinic();
         } else {
           alert("Somthing went wrong!");
         }
@@ -56,7 +55,7 @@ export function MEditDoctor(props: IActived) {
   };
 
   const emptyFields = () => {
-    setEdit({ ...edit, name: "", email: "" });
+    setEdit({ ...edit, name: "", address: "", phone: "" });
     setErrorMessage("");
   };
 
@@ -64,7 +63,7 @@ export function MEditDoctor(props: IActived) {
     <Container isOn={props.isOn}>
       <Content>
         <ContentHeader>
-          <Title>ATUALIZAR DADOS DO MÉDICO</Title>
+          <Title>ATUALIZAR DADOS DA UBS</Title>
           <Close>
             <IoIosClose size={25} onClick={() => handleCloseModal()} />
           </Close>
@@ -78,23 +77,16 @@ export function MEditDoctor(props: IActived) {
           />
           <SInput
             type="text"
-            value={edit.crm}
-            onChange={(e) => setEdit({ ...edit, crm: e.target.value })}
-            placeholder="Email"
-          />
-          <SInput
-            type="email"
-            value={edit.email}
-            onChange={(e) => setEdit({ ...edit, email: e.target.value })}
+            value={edit.address}
+            onChange={(e) => setEdit({ ...edit, address: e.target.value })}
             placeholder="Email"
           />
           <SInput
             type="text"
             value={edit.phone}
             onChange={(e) => setEdit({ ...edit, phone: e.target.value })}
-            placeholder="Email"
+            placeholder="Telefone"
           />
-          <SInput type="text" placeholder="Especialidade" />
 
           <ContentBtns>
             <BtnCancel onClick={() => props.onClickClose()}>Cancelar</BtnCancel>

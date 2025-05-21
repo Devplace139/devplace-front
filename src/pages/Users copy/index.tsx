@@ -18,7 +18,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { MAddUSer } from "../../components/Modal/MAddUser";
 import { MEditUSer } from "../../components/Modal/MEditUser";
 
-export function Users() {
+function Home() {
   const [users, setUsers] = useState<IUsers[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredUsers, setFilteredUsers] = useState(users);
@@ -162,3 +162,5 @@ export function Users() {
     </>
   );
 }
+
+export default Home;

@@ -40,7 +40,7 @@ export function MAddUSer(props: IActived) {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3333/api/v1/users/", user)
+      .post("http://localhost:3000/api/v1/users/", user)
       .then(() => {
         emptyFields();
         props.onClickClose();

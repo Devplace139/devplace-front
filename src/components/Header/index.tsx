@@ -31,9 +31,7 @@ function Header() {
                 HOME
               </StyledLink>
             </NavItem>
-            {/* <NavItem>
-            <StyledLink to={'/add-user'}>CADASTRAR USUÁRIO</StyledLink>
-          </NavItem> */}
+
             <NavItem>
               <StyledLink
                 to={"/users"}
@@ -67,9 +65,23 @@ function Header() {
                 MÉDICOS
               </StyledLink>
             </NavItem>
-            {/* <NavItem>
-            <StyledLink to={'/search-users'}>BUSCAR USUÁRIOS</StyledLink>
-          </NavItem> */}
+
+            <NavItem>
+              <StyledLink
+                to={"/ubs"}
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "rgb(48, 48, 170)",
+                        background: "white ",
+                        fontWeight: "bold",
+                      }
+                    : {}
+                }
+              >
+                UBS
+              </StyledLink>
+            </NavItem>
           </NavList>
         </nav>
       </Content>

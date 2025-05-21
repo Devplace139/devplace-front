@@ -15,7 +15,7 @@ import {
 } from "./styles";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
-import { IDoctors } from "../../interfaces/IDoctors";
+import { IDoctors } from "../../interfaces/IDoctor";
 import { MAddDoctor } from "../../components/Modal/MAddDoctor";
 import { MEditDoctor } from "../../components/Modal/MEditDoctor";
 
@@ -33,10 +33,9 @@ export function Doctors() {
   }, []);
 
   async function loadDoctors() {
-    const response = await axios.get("http://localhost:3333/api/v1/doctors");
+    const response = await axios.get("http://localhost:3000/api/v1/doctors");
     setDoctors(response.data);
     setFilteredDoctors(response.data);
-    console.log(response.data);
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +61,7 @@ export function Doctors() {
     if (!confirmDelete.isConfirmed) return;
 
     await axios
-      .delete(`http://localhost:3333/api/v1/doctors/${id}`)
+      .delete(`http://localhost:3000/api/v1/doctors/${id}`)
       .then(() => {
         // setDoctors(doctors.filter((d) => id !== d.id));
         loadDoctors();

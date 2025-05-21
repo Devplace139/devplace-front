@@ -17,7 +17,7 @@ import {
 } from "./style";
 import { useState } from "react";
 import axios from "axios";
-import IUsers from "../../../interfaces/IUsers";
+import IUsers from "../../../interfaces/IUser";
 
 interface IActived {
   isOn: boolean;
@@ -37,7 +37,7 @@ export function MEditUSer(props: IActived) {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:3333/api/v1/users/${props.editUser?.id}`, edit)
+      .put(`http://localhost:3000/api/v1/users/${props.editUser?.id}`, edit)
       .then((response) => {
         if (response.status === 200) {
           props.onClickClose();
