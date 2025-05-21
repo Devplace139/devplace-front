@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Routes, Route } from "react-router-dom";
 
-import Home from "../pages/Home/Home";
+import { Home } from "../pages/Home/Home";
 import { Users } from "../pages/Users";
 import { Doctors } from "../pages/Doctors";
-import { Ubs } from "../pages/Ubs";
+import { Clinics } from "../pages/Clinics";
 
 export function RoutesApp() {
   return (
@@ -13,7 +13,7 @@ export function RoutesApp() {
         <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
         <Route path="/doctors" element={<Doctors />} />
-        <Route path="/ubs" element={<Ubs />} />
+        <Route path="/ubs" element={<Clinics />} />
       </Routes>
     </div>
   );

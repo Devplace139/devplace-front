@@ -18,7 +18,7 @@ import { IClinic } from "../../interfaces/IClinic";
 import { MAddClinic } from "../../components/Modal/MAddClinic";
 import { MEditClinic } from "../../components/Modal/MEditClinic";
 
-export function Ubs() {
+export function Clinics() {
   const [clinics, setClinics] = useState<IClinic[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredClinics, setFilteredClinics] = useState(clinics);
