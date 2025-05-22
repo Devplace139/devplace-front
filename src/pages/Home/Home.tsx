@@ -22,6 +22,7 @@ import {
   WFilter,
   WOrder,
   WListAppointments,
+  TableContainer,
 } from "./style";
 
 import { LuCalendarDays } from "react-icons/lu";
@@ -30,6 +31,47 @@ import { RiStethoscopeLine, RiArrowUpDownLine } from "react-icons/ri";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { FaRegHospital } from "react-icons/fa";
 import { GoFilter } from "react-icons/go";
+
+import { DoctorAppointment } from "../../components/Items/DoctorAppointment";
+
+const listAppointments = [
+  {
+    patient: "Maria Siqueira",
+    date: "22/05/2025",
+    doctor: "Dr. Paulo Silva",
+    status: "confirmado",
+  },
+  {
+    patient: "Carlos Pontes",
+    date: "22/05/2025",
+    doctor: "Dr. Paulo Silva",
+    status: "confirmado",
+  },
+  {
+    patient: "Pérola Silva",
+    date: "22/05/2025",
+    doctor: "Dr. Carminha Mendes",
+    status: "confirmado",
+  },
+];
+
+const ListDoctorsAppointments = [
+  {
+    doctor: "Dr. Paulo Silva",
+    specialty: "Cardiologista",
+    totalAppointment: 25,
+  },
+  {
+    doctor: "Dr. Carminha Mendes",
+    specialty: "Ginecologista",
+    totalAppointment: 55,
+  },
+  {
+    doctor: "Dr. Lucas Lima",
+    specialty: "Ortopedista",
+    totalAppointment: 32,
+  },
+];
 
 export function Home() {
   return (
@@ -104,7 +146,52 @@ export function Home() {
             </WOrder>
           </HeaderAppointments>
 
-          <WListAppointments></WListAppointments>
+          <WListAppointments>
+            <TableContainer>
+              <table>
+                <thead>
+                  <th>PACIENTE</th>
+                  <th>DATA</th>
+                  <th>MÉDICO</th>
+                  <th>STATUS</th>
+                </thead>
+                <tbody>
+                  {listAppointments.map((a, index) => (
+                    <tr key={index}>
+                      <td>{a.patient}</td>
+                      <td>{a.date}</td>
+                      <td>{a.doctor}</td>
+                      <td>{a.status}</td>
+                    </tr>
+                  ))}
+                  {listAppointments.map((a, index) => (
+                    <tr key={index}>
+                      <td>{a.patient}</td>
+                      <td>{a.date}</td>
+                      <td>{a.doctor}</td>
+                      <td>{a.status}</td>
+                    </tr>
+                  ))}
+                  {listAppointments.map((a, index) => (
+                    <tr key={index}>
+                      <td>{a.patient}</td>
+                      <td>{a.date}</td>
+                      <td>{a.doctor}</td>
+                      <td>{a.status}</td>
+                    </tr>
+                  ))}
+                  {listAppointments.map((a, index) => (
+                    <tr key={index}>
+                      <td>{a.patient}</td>
+                      <td>{a.date}</td>
+                      <td>{a.doctor}</td>
+                      <td>{a.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableContainer>
+          </WListAppointments>
         </WAppointments>
 
         <WDoctors>
@@ -116,7 +203,16 @@ export function Home() {
             <SeeAll>Ver todos</SeeAll>
           </HeaderDoctors>
 
-          <WListDoctors></WListDoctors>
+          <WListDoctors>
+            {ListDoctorsAppointments.map((d, index) => (
+              <DoctorAppointment
+                key={index}
+                doctor={d.doctor}
+                specialty={d.specialty}
+                totalAppointment={d.totalAppointment}
+              />
+            ))}
+          </WListDoctors>
         </WDoctors>
       </ContentDoctorAppointments>
     </Container>

@@ -10,8 +10,6 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  border: 1px solid black;
 `;
 
 export const Content = styled.div`
@@ -22,9 +20,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
-
-  border: 1px solid black;
 
   a {
     font-size: 1rem;
@@ -45,16 +40,11 @@ export const Content = styled.div`
 export const STitlePage = styled.span`
   font-size: 1.5rem;
   font-weight: 500;
-
-  border: 1px solid black;
 `;
 
 // Content Filter
 export const ContentFilter = styled.div`
   width: 100%;
-  padding: 5px 0;
-
-  border: 1px solid black;
 
   display: flex;
   justify-content: space-between;
@@ -83,12 +73,10 @@ export const ContentAccountants = styled.div`
   width: 100%;
   height: 100px;
   padding: 5px 0;
-  margin-top: 5px;
-
-  border: 1px solid black;
+  margin-top: 10px;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
 `;
@@ -130,8 +118,6 @@ export const ContentDoctorAppointments = styled.div`
   display: flex;
 
   gap: 10px;
-
-  border: 1px solid black;
 `;
 
 export const WAppointments = styled.div`
@@ -139,29 +125,25 @@ export const WAppointments = styled.div`
   height: 100%;
   background-color: white;
   border-radius: 5px;
+  padding: 5px;
 
   display: flex;
   flex-direction: column;
-
-  border: 1px solid black;
 `;
 
 export const HeaderAppointments = styled.div`
   width: 100%;
   padding: 5px;
-  border: 1px solid black;
 
   display: flex;
 `;
 
 export const TitleHeaderAppointments = styled.span`
   width: 80%;
-
+  padding-right: 15px;
   display: flex;
   align-items: center;
   gap: 5px;
-
-  border: 1px solid black;
 `;
 
 export const WFilter = styled.div`
@@ -169,6 +151,7 @@ export const WFilter = styled.div`
   height: 100%;
   cursor: pointer;
   margin: 0 5px;
+  margin-left: 20px;
   border-radius: 5px;
 
   display: flex;
@@ -196,8 +179,70 @@ export const WOrder = styled.div`
 export const WListAppointments = styled.div`
   width: 100%;
   height: 100%;
+  overflow: auto;
 
-  border: 1px solid red;
+  /* border: 1px solid red; */
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(177, 177, 177, 0.5);
+  }
+`;
+
+export const TableContainer = styled.section`
+  margin-top: 5px;
+  border-radius: 5px 5px 0 0;
+
+  table {
+    width: 100%;
+    border-spacing: 0 6px;
+
+    th {
+      color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(177, 177, 177, 0.1);
+      font-weight: 600;
+      padding: 15px 10px;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 0px;
+    }
+
+    td {
+      padding: 5px 10px;
+      border: 0;
+      background-color: white;
+      font-size: 1rem;
+      font-weight: normal;
+
+      button {
+        background-color: transparent;
+        border: none;
+      }
+
+      &.title {
+        color: #363f5f;
+      }
+
+      &.income {
+        color: #12a454;
+      }
+
+      &.outcome {
+        color: #e83f5b;
+      }
+    }
+
+    td:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    td:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+  }
 `;
 
 export const WDoctors = styled.div`
@@ -205,17 +250,15 @@ export const WDoctors = styled.div`
   height: 100%;
   background-color: white;
   border-radius: 5px;
+  padding: 5px;
 
   display: flex;
   flex-direction: column;
-
-  border: 1px solid green;
 `;
 
 export const HeaderDoctors = styled.div`
   width: 100%;
   padding: 5px;
-  border: 1px solid black;
 
   display: flex;
 `;
@@ -226,15 +269,22 @@ export const TitleHeaderDoctors = styled.span`
   display: flex;
   align-items: center;
   gap: 5px;
-
-  border: 1px solid black;
 `;
 
 export const WListDoctors = styled.div`
   width: 100%;
   height: 100%;
+  overflow: auto;
 
-  border: 1px solid red;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(177, 177, 177, 0.5);
+  }
+
+  /* border: 1px solid red; */
 `;
 
 export const SeeAll = styled.span`
@@ -246,6 +296,4 @@ export const SeeAll = styled.span`
   justify-content: end;
   align-items: center;
   gap: 5px;
-
-  border: 1px solid black;
 `;
