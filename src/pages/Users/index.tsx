@@ -13,8 +13,9 @@ import {
   TableContainer,
   WSearch,
 } from "./styles";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiUserPlus } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
+
 import { MAddUSer } from "../../components/Modal/MAddUser";
 import { MEditUSer } from "../../components/Modal/MEditUser";
 
@@ -103,7 +104,10 @@ export function Users() {
               />
             </SSearch>
 
-            <BtnAdd onClick={() => handleOpenAddUser()}>Novo usuário</BtnAdd>
+            <BtnAdd onClick={() => handleOpenAddUser()}>
+              <FiUserPlus size={20} />
+              Adicionar
+            </BtnAdd>
           </WSearch>
         </Content>
         <TableContainer>

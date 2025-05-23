@@ -181,7 +181,7 @@ export const WListAppointments = styled.div`
   height: 100%;
   overflow: auto;
 
-  /* border: 1px solid red; */
+  border: 1px solid red;
 
   &::-webkit-scrollbar {
     width: 3px;

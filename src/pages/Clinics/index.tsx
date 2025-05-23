@@ -12,7 +12,7 @@ import {
   TableContainer,
   WSearch,
 } from "./styles";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiUserPlus } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
 import { IClinic } from "../../interfaces/IClinic";
 import { MAddClinic } from "../../components/Modal/MAddClinic";
@@ -103,7 +103,10 @@ export function Clinics() {
               />
             </SSearch>
 
-            <BtnAdd onClick={() => handleOpenAddClinic()}>Nova UBS</BtnAdd>
+            <BtnAdd onClick={() => handleOpenAddClinic()}>
+              <FiUserPlus size={20} />
+              Adicionar
+            </BtnAdd>
           </WSearch>
         </Content>
         <TableContainer>

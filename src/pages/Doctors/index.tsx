@@ -13,7 +13,7 @@ import {
   TableContainer,
   WSearch,
 } from "./styles";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiUserPlus } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
 import { IDoctors } from "../../interfaces/IDoctor";
 import { MAddDoctor } from "../../components/Modal/MAddDoctor";
@@ -104,7 +104,10 @@ export function Doctors() {
               />
             </SSearch>
 
-            <BtnAdd onClick={() => handleOpenAddDoctor()}>Novo médico</BtnAdd>
+            <BtnAdd onClick={() => handleOpenAddDoctor()}>
+              <FiUserPlus size={20} />
+              Adicionar
+            </BtnAdd>
           </WSearch>
         </Content>
         <TableContainer>

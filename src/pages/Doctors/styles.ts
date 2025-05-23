@@ -63,6 +63,7 @@ export const SSearch = styled.div`
 
   input {
     width: 100%;
+    height: 60px;
     padding: 5px 10px;
     background-color: #e7e9ee;
     border: 0;
@@ -90,11 +91,12 @@ export const BtnAdd = styled.button`
   text-decoration: none;
   color: #fff;
   justify-content: center;
-  padding: 5px 10px;
+  padding: 5px 30px;
   border: 0;
 
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
 
 export const TableContainer = styled.section`
@@ -115,6 +117,7 @@ export const TableContainer = styled.section`
     }
 
     td {
+      height: 60px;
       padding: 5px 32px;
       border: 0;
       background-color: white;

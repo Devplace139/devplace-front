@@ -36,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: var(--background);
     -webkit-font-smoothing: antialiased;
+
+    display: flex;
+    flex-direction: column;
+
   }
 
   body, input, textarea, button {

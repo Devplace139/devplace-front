@@ -82,6 +82,23 @@ function Header() {
                 UBS
               </StyledLink>
             </NavItem>
+
+            <NavItem>
+              <StyledLink
+                to={"/appointments"}
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "rgb(48, 48, 170)",
+                        background: "white ",
+                        fontWeight: "bold",
+                      }
+                    : {}
+                }
+              >
+                AGENDAMENTOS
+              </StyledLink>
+            </NavItem>
           </NavList>
         </nav>
       </Content>
