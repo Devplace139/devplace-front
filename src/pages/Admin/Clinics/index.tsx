@@ -14,9 +14,9 @@ import {
 } from "./styles";
 import { FiEdit, FiTrash2, FiUserPlus } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
-import { IClinic } from "../../interfaces/IClinic";
-import { MAddClinic } from "../../components/Modal/MAddClinic";
-import { MEditClinic } from "../../components/Modal/MEditClinic";
+import { IClinic } from "../../../interfaces/IClinic";
+import { MAddClinic } from "../../../components/Modal/MAddClinic";
+import { MEditClinic } from "../../../components/Modal/MEditClinic";
 
 export function Clinics() {
   const [clinics, setClinics] = useState<IClinic[]>([]);

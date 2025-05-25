@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { Routes, Route } from "react-router-dom";
 
-import { Home } from "../pages/Home/Home";
-import { Users } from "../pages/Users";
-import { Doctors } from "../pages/Doctors";
-import { Clinics } from "../pages/Clinics";
-import { Appointments } from "../pages/Appointments";
+import { Home } from "../pages/Admin/Home/Home";
+import { Users } from "../pages/Admin/Users";
+import { Doctors } from "../pages/Admin/Doctors";
+import { Clinics } from "../pages/Admin/Clinics";
+import { Appointments } from "../pages/Admin/Appointments";
 
 export function RoutesApp() {
   return (
