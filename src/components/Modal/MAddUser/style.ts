@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styled from "styled-components";
-import { IActived } from "../../../interfaces/IUser";
+import { IActived } from "../../../interfaces/IHelper";
 
 export const Container = styled.div<IActived>`
   width: 100vw;

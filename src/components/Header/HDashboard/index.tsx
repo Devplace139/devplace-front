@@ -8,16 +8,16 @@ import {
   StyledLink,
 } from "./styles";
 
-function Header() {
+export default function Header() {
   return (
     <HeaderContainer>
       <Content>
-        <SLogo to={"/"}>PLACEMED</SLogo>
+        <SLogo to={"/dashboard"}>PLACEMED</SLogo>
         <nav>
           <NavList>
             <NavItem>
               <StyledLink
-                to={"/"}
+                to={"/dashboard"}
                 style={({ isActive }) =>
                   isActive
                     ? {
@@ -105,5 +105,3 @@ function Header() {
     </HeaderContainer>
   );
 }
-
-export default Header;

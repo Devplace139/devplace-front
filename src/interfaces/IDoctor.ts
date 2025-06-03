@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-export interface IDoctors {
+export interface IDoctor {
   id: string;
   name: string;
   crm: string;

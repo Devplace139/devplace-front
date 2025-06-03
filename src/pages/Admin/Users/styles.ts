@@ -112,7 +112,7 @@ export const TableContainer = styled.section`
       font-weight: 600;
       padding: 15px 32px;
       text-align: left;
-      font-size: 1rem;
+      font-size: 1.3rem;
       line-height: 0px;
     }
 

@@ -17,6 +17,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { IClinic } from "../../../interfaces/IClinic";
 import { MAddClinic } from "../../../components/Modal/MAddClinic";
 import { MEditClinic } from "../../../components/Modal/MEditClinic";
+import Header from "../../../components/Header/HDashboard";
 
 export function Clinics() {
   const [clinics, setClinics] = useState<IClinic[]>([]);
@@ -89,6 +90,7 @@ export function Clinics() {
 
   return (
     <>
+      <Header />
       <Container>
         <Content>
           <STitlePage>Unidades Básicas de Saúde</STitlePage>

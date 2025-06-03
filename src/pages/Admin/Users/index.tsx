@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
-import type IUsers from "../../interfaces/IUser";
+import type IUsers from "../../../interfaces/IUser";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {
@@ -16,8 +16,9 @@ import {
 import { FiEdit, FiTrash2, FiUserPlus } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
 
-import { MAddUSer } from "../../components/Modal/MAddUser";
-import { MEditUSer } from "../../components/Modal/MEditUser";
+import { MAddUSer } from "../../../components/Modal/MAddUser";
+import { MEditUSer } from "../../../components/Modal/MEditUser";
+import Header from "../../../components/Header/HDashboard";
 
 export function Users() {
   const [users, setUsers] = useState<IUsers[]>([]);
@@ -90,6 +91,7 @@ export function Users() {
 
   return (
     <>
+      <Header />
       <Container>
         <Content>
           <STitlePage>Usuários</STitlePage>

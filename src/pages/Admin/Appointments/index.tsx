@@ -14,6 +14,7 @@ import { GoFilter } from "react-icons/go";
 import { RiArrowUpDownLine } from "react-icons/ri";
 import { FiExternalLink } from "react-icons/fi";
 import { FaCircle } from "react-icons/fa";
+import Header from "../../../components/Header/HDashboard";
 
 const listAppointments = [
   {
@@ -38,83 +39,86 @@ const listAppointments = [
 
 export function Appointments() {
   return (
-    <Container>
-      <STitlePage>Agendamentos</STitlePage>
-      <HeaderAppointments>
-        <WFilter>
-          <GoFilter size={18} />
-          Filtrar
-        </WFilter>
-        <WOrder>
-          <RiArrowUpDownLine size={18} />
-          Ordenar
-        </WOrder>
-      </HeaderAppointments>
+    <>
+      <Header />
+      <Container>
+        <STitlePage>Agendamentos</STitlePage>
+        <HeaderAppointments>
+          <WFilter>
+            <GoFilter size={18} />
+            Filtrar
+          </WFilter>
+          <WOrder>
+            <RiArrowUpDownLine size={18} />
+            Ordenar
+          </WOrder>
+        </HeaderAppointments>
 
-      <WListAppointments>
-        <TableContainer>
-          <table>
-            <thead>
-              <th>PACIENTE</th>
-              <th>DATA</th>
-              <th>MÉDICO</th>
-              <th>STATUS</th>
-              <th></th>
-            </thead>
-            <tbody>
-              {listAppointments.map((a, index) => (
-                <tr key={index}>
-                  <td>{a.patient}</td>
-                  <td>{a.date}</td>
-                  <td>{a.doctor}</td>
-                  <td>
-                    <Status>
-                      <FaCircle size={10} />
-                      {a.status}
-                    </Status>
-                  </td>
-                  <td>
-                    <FiExternalLink color="black" size={17} />
-                  </td>
-                </tr>
-              ))}
+        <WListAppointments>
+          <TableContainer>
+            <table>
+              <thead>
+                <th>PACIENTE</th>
+                <th>DATA</th>
+                <th>MÉDICO</th>
+                <th>STATUS</th>
+                <th></th>
+              </thead>
+              <tbody>
+                {listAppointments.map((a, index) => (
+                  <tr key={index}>
+                    <td>{a.patient}</td>
+                    <td>{a.date}</td>
+                    <td>{a.doctor}</td>
+                    <td>
+                      <Status>
+                        <FaCircle size={10} />
+                        {a.status}
+                      </Status>
+                    </td>
+                    <td>
+                      <FiExternalLink color="black" size={17} />
+                    </td>
+                  </tr>
+                ))}
 
-              {listAppointments.map((a, index) => (
-                <tr key={index}>
-                  <td>{a.patient}</td>
-                  <td>{a.date}</td>
-                  <td>{a.doctor}</td>
-                  <td>
-                    <Status>
-                      <FaCircle size={10} />
-                      {a.status}
-                    </Status>
-                  </td>
-                  <td>
-                    <FiExternalLink color="black" size={17} />
-                  </td>
-                </tr>
-              ))}
-              {listAppointments.map((a, index) => (
-                <tr key={index}>
-                  <td>{a.patient}</td>
-                  <td>{a.date}</td>
-                  <td>{a.doctor}</td>
-                  <td>
-                    <Status>
-                      <FaCircle size={10} />
-                      {a.status}
-                    </Status>
-                  </td>
-                  <td>
-                    <FiExternalLink color="black" size={17} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </TableContainer>
-      </WListAppointments>
-    </Container>
+                {listAppointments.map((a, index) => (
+                  <tr key={index}>
+                    <td>{a.patient}</td>
+                    <td>{a.date}</td>
+                    <td>{a.doctor}</td>
+                    <td>
+                      <Status>
+                        <FaCircle size={10} />
+                        {a.status}
+                      </Status>
+                    </td>
+                    <td>
+                      <FiExternalLink color="black" size={17} />
+                    </td>
+                  </tr>
+                ))}
+                {listAppointments.map((a, index) => (
+                  <tr key={index}>
+                    <td>{a.patient}</td>
+                    <td>{a.date}</td>
+                    <td>{a.doctor}</td>
+                    <td>
+                      <Status>
+                        <FaCircle size={10} />
+                        {a.status}
+                      </Status>
+                    </td>
+                    <td>
+                      <FiExternalLink color="black" size={17} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TableContainer>
+        </WListAppointments>
+      </Container>
+    </>
   );
 }

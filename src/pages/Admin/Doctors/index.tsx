@@ -15,15 +15,16 @@ import {
 } from "./styles";
 import { FiEdit, FiTrash2, FiUserPlus } from "react-icons/fi";
 import { RiSearchLine } from "react-icons/ri";
-import { IDoctors } from "../../interfaces/IDoctor";
-import { MAddDoctor } from "../../components/Modal/MAddDoctor";
-import { MEditDoctor } from "../../components/Modal/MEditDoctor";
+import { IDoctor } from "../../../interfaces/IDoctor";
+import { MAddDoctor } from "../../../components/Modal/MAddDoctor";
+import { MEditDoctor } from "../../../components/Modal/MEditDoctor";
+import Header from "../../../components/Header/HDashboard";
 
 export function Doctors() {
-  const [doctors, setDoctors] = useState<IDoctors[]>([]);
+  const [doctors, setDoctors] = useState<IDoctor[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState(doctors);
-  const [editDoctors, setEditDoctors] = useState<IDoctors | null>(null);
+  const [editDoctors, setEditDoctors] = useState<IDoctor | null>(null);
 
   const [openAddDoctor, setOpenAddDoctor] = useState(false);
   const [openEditDoctor, setOpenEditDoctor] = useState(false);
@@ -79,7 +80,7 @@ export function Doctors() {
     setOpenAddDoctor(!openAddDoctor);
   };
 
-  const handleOpenEditDoctor = (doctor: IDoctors) => {
+  const handleOpenEditDoctor = (doctor: IDoctor) => {
     setEditDoctors(doctor);
     setOpenEditDoctor(!openEditDoctor);
   };
@@ -90,6 +91,7 @@ export function Doctors() {
 
   return (
     <>
+      <Header />
       <Container>
         <Content>
           <STitlePage>Médicos</STitlePage>
@@ -127,7 +129,7 @@ export function Doctors() {
                     .toLocaleLowerCase()
                     .localeCompare(b.name.toLocaleLowerCase());
                 })
-                .map((d: IDoctors) => {
+                .map((d: IDoctor) => {
                   return (
                     <tr key={d.id}>
                       <td>{d.name}</td>
